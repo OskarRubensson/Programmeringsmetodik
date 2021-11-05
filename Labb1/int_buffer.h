@@ -20,15 +20,15 @@ class int_buffer {
         int_buffer( int_buffer&& rhs );                     // Move construct
         int_buffer& operator=( const int_buffer& rhs );     // Copy assign
         int_buffer& operator=( int_buffer&& rhs );          // Move assign
-        int& operator[]( size_t index );
-        const int& operator[]( size_t index ) const;
-        size_t size() const;
+        int& operator[]( size_t index );                    // Get at index
+        const int& operator[]( size_t index ) const;        // Get at index (const)
+        size_t size() const;                                // Get size
         
-        int* begin();
-        int* end();
-        const int* begin() const;
-        const int* end() const;
-        ~int_buffer();
+        int* begin();                                       // Get pointer at first element
+        int* end();                                         // Get pointer at last element
+        const int* begin() const;                           // Get ponter at first element (const)
+        const int* end() const;                             // Get pointer at last element (const)
+        ~int_buffer();                                      // Destructor - For all elements
 };
 
 #endif /* INTBUFFER_H */
