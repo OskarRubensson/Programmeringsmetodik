@@ -8,6 +8,7 @@
 			"args": [
 				"-fdiagnostics-color=always",
 				"-g",
+				"int_buffer.cpp",
 				"main.cpp",
 				"-o",
 				"${fileDirname}\\main.exe"
