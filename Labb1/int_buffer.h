@@ -1,8 +1,8 @@
 #ifndef INTBUFFER_H
 #define INTBUFFER_H
-#endif /* INTBUFFER_H */
 
 #include <cstdlib> // size_t
+#include <iostream>
 #include <iterator>
 
 class int_buffer {
@@ -11,6 +11,7 @@ class int_buffer {
         size_t _size = 0;
     public:
     
+        int_buffer() = delete;                              //Ta bort default-konstruktorn
         explicit int_buffer( size_t size );                 // Default construct
         int_buffer( const int* source , size_t size );      // Resize construct
         int_buffer( const int_buffer& rhs );                // Copy construct
@@ -26,4 +27,7 @@ class int_buffer {
         const int* begin() const;                           // Get ponter at first element (const)
         const int* end() const;                             // Get pointer at last element (const)
         ~int_buffer();                                      // Destructor - For all elements
+        void print() const;                                 // Print buffer
 };
+
+#endif /* INTBUFFER_H */

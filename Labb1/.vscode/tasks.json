@@ -9,6 +9,7 @@
 				"-fdiagnostics-color=always",
 				"-g",
 				"int_buffer.cpp",
+				"int_sorted.cpp",
 				"main.cpp",
 				"-o",
 				"${fileDirname}\\main.exe"

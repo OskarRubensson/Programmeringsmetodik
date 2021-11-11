@@ -19,9 +19,11 @@ int_buffer::int_buffer(const int_buffer& rhs) // Copy construct
 }
 
 int_buffer::int_buffer( int_buffer&& rhs ) // Move construct
-    :_size(rhs.size())
+    :_size(rhs.size()), _buffer(rhs._buffer)
 {
-    std::copy(rhs.begin(), rhs.end(), begin());
+        // Reset rhs
+    rhs._size = 0;
+    rhs._buffer = nullptr;
 }
 
 int_buffer& int_buffer::operator=( const int_buffer& rhs ) // Copy assign
@@ -81,4 +83,11 @@ int_buffer::~int_buffer() // Destructor - For all elements
 {
     if (_buffer != nullptr)
         delete[] _buffer;
+}
+
+void int_buffer::print() const {
+    for (const int* i = begin(); i != end(); i++) {
+        std::cout << *i << ' ';
+    }
+    std::cout << std::endl;
 }
