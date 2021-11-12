@@ -1,9 +1,0 @@
-{
-    "files.associations": {
-        "xutility": "cpp",
-        "initializer_list": "cpp",
-        "type_traits": "cpp",
-        "xstring": "cpp",
-        "ostream": "cpp"
-    }
-}
