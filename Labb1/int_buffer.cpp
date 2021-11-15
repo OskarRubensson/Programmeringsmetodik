@@ -18,24 +18,26 @@ int_buffer::int_buffer(const int_buffer& rhs) // Copy construct
     std::copy(rhs.begin(), rhs.end(), begin());
 }
 
-int_buffer::int_buffer( int_buffer&& rhs ) // Move construct
-    :_size(rhs.size()), _buffer(rhs._buffer)
+int_buffer::int_buffer( int_buffer&& rhs ) noexcept // Move construct
+    :_size(rhs._size), _buffer(rhs._buffer)
 {
-        // Reset rhs
     rhs._size = 0;
     rhs._buffer = nullptr;
 }
 
 int_buffer& int_buffer::operator=( const int_buffer& rhs ) // Copy assign
 {
-    std::copy(rhs.begin(), rhs.end(), begin());
-    _size = rhs.size();
+    int_buffer tmp = int_buffer(rhs);
+    swap(tmp);
+
+    return *this;
 }
 
-int_buffer& int_buffer::operator=( int_buffer&& rhs ) // Move assign
+int_buffer& int_buffer::operator=( int_buffer&& rhs ) noexcept // Move assign
 {
-    _buffer = rhs.begin();
-    _size = rhs.size();
+    swap(rhs);
+
+    return *this;
 }
 
 int& int_buffer::operator[]( size_t index ) // Get at index
@@ -69,7 +71,7 @@ int* int_buffer::end() // Get pointer at last element
     return _buffer+_size;
 }
 
-const int* int_buffer::begin() const // Get ponter at first element (const)
+const int* int_buffer::begin() const // Get pointer at first element (const)
 {
     return _buffer;
 }
@@ -85,9 +87,7 @@ int_buffer::~int_buffer() // Destructor - For all elements
         delete[] _buffer;
 }
 
-void int_buffer::print() const {
-    for (const int* i = begin(); i != end(); i++) {
-        std::cout << *i << ' ';
-    }
-    std::cout << std::endl;
+void int_buffer::swap(int_buffer& buf){
+    std::swap(buf._buffer, _buffer);
+    std::swap(buf._size, _size);
 }

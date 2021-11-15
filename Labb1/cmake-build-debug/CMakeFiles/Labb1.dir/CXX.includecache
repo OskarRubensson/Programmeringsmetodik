@@ -1,0 +1,36 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/oskarrubensson/Documents/Github/Programmeringsmetodik/Labb1/int_buffer.h
+cstdlib
+-
+iostream
+-
+iterator
+-
+
+/Users/oskarrubensson/Documents/Github/Programmeringsmetodik/Labb1/int_sorted.h
+cstdlib
+-
+iostream
+-
+iterator
+-
+int_buffer.h
+/Users/oskarrubensson/Documents/Github/Programmeringsmetodik/Labb1/int_buffer.h
+
+/Users/oskarrubensson/Documents/Github/Programmeringsmetodik/Labb1/main.cpp
+iostream
+-
+ctime
+-
+int_buffer.h
+/Users/oskarrubensson/Documents/Github/Programmeringsmetodik/Labb1/int_buffer.h
+int_sorted.h
+/Users/oskarrubensson/Documents/Github/Programmeringsmetodik/Labb1/int_sorted.h
+

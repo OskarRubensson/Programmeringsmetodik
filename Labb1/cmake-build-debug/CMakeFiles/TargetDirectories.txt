@@ -1,0 +1,3 @@
+/Users/oskarrubensson/Documents/Github/Programmeringsmetodik/Labb1/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/oskarrubensson/Documents/Github/Programmeringsmetodik/Labb1/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/oskarrubensson/Documents/Github/Programmeringsmetodik/Labb1/cmake-build-debug/CMakeFiles/Labb1.dir

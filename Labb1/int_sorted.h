@@ -11,11 +11,11 @@ class int_sorted {
         int_buffer _buffer;
     public:
     
-        int_sorted() = delete;  //Ta bort default-konstruktorn
-        int_sorted(const int* source, size_t size);
+        int_sorted() = delete;                                  // Remove default constructor
+        explicit int_sorted(const int* source, size_t size);    // Default constructor
         size_t size() const;                                    // Get buffer-size
         int* insert(int value);                                 // Insert element to buffer, Returns the insertion point
-        const int* begin() const;                               // Get ponter at first element (const)
+        const int* begin() const;                               // Get pointer at first element (const)
         const int* end() const;                                 // Get pointer at last element (const)
         int_sorted merge(const int_sorted& merge_with) const;   // Returns merged version of the two int_buffers
         void print() const;

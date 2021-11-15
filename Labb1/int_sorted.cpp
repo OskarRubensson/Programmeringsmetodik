@@ -11,48 +11,28 @@ size_t int_sorted::size() const // Get buffer-size
 
 int* int_sorted::insert(int value) // Returns the insertion point
 {
-        // Create temporary buffer
+        // Declarations
     int_buffer temp_buffer(size() + 1);
-    /*int* insertion_point = temp_buffer.begin();
+    int* iter = _buffer.begin();
+    int* insertion_point = temp_buffer.begin();
+    bool found_insert = false;
 
-        // Find insertion point for value
-    for (const int* iter = _buffer.begin(); iter != _buffer.end(); iter++) {
-        if (*iter > value)
-            break;
-        
-        insertion_point++;
-    }
-
-        // Insertion_point is now pointing where it should be inserted
-    *insertion_point = value;
-    
-        // Iterate temp_buffer and _buffer
-        // Copy values from _buffer -> temp_buffer, skipping the point where we just inserted the new value
-    int* temp_iter = temp_buffer.begin();
-    for (const int* iter = begin(); iter != end(); ++iter, ++temp_iter) {
-        if (temp_iter == insertion_point) 
-            temp_iter++;
-
+        // Loop through both temp_buffer and _buffer simultaneously
+    for (int* temp_iter = temp_buffer.begin(); iter != _buffer.end(); iter++, temp_iter++) {
+            // Move along insertion_point until the insertion-point is found
+        if (*iter < value) {
+            insertion_point++;
+        } else if(!found_insert) {
+            // Insertion-point found, take _buffers-pointer back one step to accumulate for its smaller size
+            found_insert = true;
+            iter--;
+        }
+            // Copy value from _buffer to temp_buffer
         *temp_iter = *iter;
     }
-*/
-    int* temp_iter = temp_buffer.begin();
-    int* insertion_point = nullptr;
-    for (int* iter = _buffer.begin(); iter != end() && temp_iter != temp_buffer.end(); ++iter, ++temp_iter) {
-        if (insertion_point != nullptr && *iter > value) {
-            *temp_iter = value;
-            insertion_point = iter;
-            --iter;
-        } else {
-            *temp_iter = *iter;
-        }
-    }
 
-    std::cout << "---- _buffer ------" << std::endl;
-    _buffer.print();
-
-    std::cout << "---- temp_buffer ------" << std::endl;
-    temp_buffer.print();
+        // Now change the insertion_points value to the insert-value
+    *insertion_point = value;
 
         // Reassign _buffer to temp_buffer
     _buffer = std::move(temp_buffer);
@@ -60,7 +40,7 @@ int* int_sorted::insert(int value) // Returns the insertion point
     return insertion_point;
 }
 
-const int* int_sorted::begin() const // Get ponter at first element (const)
+const int* int_sorted::begin() const // Get pointer at first element (const)
 {
     return _buffer.begin();
 }
@@ -73,11 +53,4 @@ const int* int_sorted::end() const // Get pointer at last element (const)
 int_sorted int_sorted::merge(const int_sorted& merge_with) const // Returns merged version of the two int_buffers
 {
 
-}
-
-void int_sorted::print() const {
-    for (const int* i = begin(); i != end(); i++) {
-        std::cout << *i << " ";
-    }
-    std::cout << std::endl;
 }
