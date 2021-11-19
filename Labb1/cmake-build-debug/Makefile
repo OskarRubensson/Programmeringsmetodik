@@ -129,6 +129,30 @@ Labb1/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Labb1.dir/build.make CMakeFiles/Labb1.dir/build
 .PHONY : Labb1/fast
 
+benchmarker.o: benchmarker.cpp.o
+.PHONY : benchmarker.o
+
+# target to build an object file
+benchmarker.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Labb1.dir/build.make CMakeFiles/Labb1.dir/benchmarker.cpp.o
+.PHONY : benchmarker.cpp.o
+
+benchmarker.i: benchmarker.cpp.i
+.PHONY : benchmarker.i
+
+# target to preprocess a source file
+benchmarker.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Labb1.dir/build.make CMakeFiles/Labb1.dir/benchmarker.cpp.i
+.PHONY : benchmarker.cpp.i
+
+benchmarker.s: benchmarker.cpp.s
+.PHONY : benchmarker.s
+
+# target to generate assembly for a file
+benchmarker.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Labb1.dir/build.make CMakeFiles/Labb1.dir/benchmarker.cpp.s
+.PHONY : benchmarker.cpp.s
+
 int_buffer.o: int_buffer.cpp.o
 .PHONY : int_buffer.o
 
@@ -210,6 +234,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... Labb1"
+	@echo "... benchmarker.o"
+	@echo "... benchmarker.i"
+	@echo "... benchmarker.s"
 	@echo "... int_buffer.o"
 	@echo "... int_buffer.i"
 	@echo "... int_buffer.s"

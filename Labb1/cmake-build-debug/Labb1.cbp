@@ -80,6 +80,9 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/Users/oskarrubensson/Documents/Github/Programmeringsmetodik/Labb1/benchmarker.cpp">
+			<Option target="Labb1"/>
+		</Unit>
 		<Unit filename="/Users/oskarrubensson/Documents/Github/Programmeringsmetodik/Labb1/int_buffer.cpp">
 			<Option target="Labb1"/>
 		</Unit>

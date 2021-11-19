@@ -1,4 +1,5 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/Labb1.dir/benchmarker.cpp.o"
   "CMakeFiles/Labb1.dir/int_buffer.cpp.o"
   "CMakeFiles/Labb1.dir/int_sorted.cpp.o"
   "CMakeFiles/Labb1.dir/main.cpp.o"

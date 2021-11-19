@@ -1,4 +1,6 @@
 #include "int_sorted.h"
+#include <iostream>
+#include <iterator>
 
 int_sorted::int_sorted(const int* source, size_t size)
     :_buffer(int_buffer(source, size))
@@ -52,5 +54,18 @@ const int* int_sorted::end() const // Get pointer at last element (const)
 
 int_sorted int_sorted::merge(const int_sorted& merge_with) const // Returns merged version of the two int_buffers
 {
+    int_buffer merged(size() + merge_with.size());
+    const int* pointer_a = begin();
+    const int* pointer_b = merge_with.begin();
 
+    for(auto& it : merged) {
+        if (pointer_a != end() && (*pointer_a < *pointer_b || pointer_b == merge_with.end())) {
+            it = *pointer_a;
+            pointer_a++;
+        } else if (pointer_b != merge_with.end()) {
+            it = *pointer_b;
+            pointer_b++;
+        }
+    }
+    return int_sorted(merged.begin(), merged.size());
 }
