@@ -1,4 +1,8 @@
+.vscode
+main.dSYM
+cmake-build-debug
+main.dSYM
 */.vscode
 */main.dSYM
-*/cmake-build-debug/
-*/main.dSYM/
+*/cmake-build-debug
+*/main.dSYM
