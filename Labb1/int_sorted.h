@@ -1,8 +1,13 @@
+// Labb1, Programmeringsmetodik
+// Oskar Rubensson (osru1900)
+// int_sorted.h, 2021-11-22 - 2021-11-22
+// Contains the definition for int_sorted
+
 #ifndef INTSORTED_H
 #define INTSORTED_H
 
-#include <cstdlib> // size_t
 #include "int_buffer.h"
+#include <cstdlib> // size_t
 
 class int_sorted {
     private:

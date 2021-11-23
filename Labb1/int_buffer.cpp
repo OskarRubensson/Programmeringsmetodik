@@ -1,5 +1,9 @@
+// Labb1, Programmeringsmetodik
+// Oskar Rubensson (osru1900)
+// int_buffer.cpp, 2021-11-22 - 2021-11-22
+// Contains the implementation for int_buffer's-functions
+
 #include "int_buffer.h"
-#include <iterator>
 #include <algorithm>
 
 int_buffer::int_buffer(size_t size) // Default construct
@@ -42,17 +46,11 @@ int_buffer& int_buffer::operator=( int_buffer&& rhs ) noexcept // Move assign
 
 int& int_buffer::operator[]( size_t index ) // Get at index
 {
-    if(index >= _size)
-        throw std::out_of_range("Index is out of range!");
-    
     return *std::next(begin(), index);
 }
 
 const int& int_buffer::operator[]( size_t index ) const // Get at index (const)
 {
-    if(index >= _size)
-        throw std::out_of_range("Index is out of range!");
-    
     return *(_buffer+index);
 }
 
@@ -87,7 +85,16 @@ int_buffer::~int_buffer() // Destructor - For all elements
         delete[] _buffer;
 }
 
-void int_buffer::swap(int_buffer& buf){
+void int_buffer::swap(int_buffer& buf)
+{
     std::swap(buf._buffer, _buffer);
     std::swap(buf._size, _size);
+}
+
+void int_buffer::push_back(int value)
+{
+    // Declarations
+    int_buffer temp_buffer(begin(),size() + 1 );
+    temp_buffer[temp_buffer.size() - 1] = value;
+    swap(temp_buffer);
 }

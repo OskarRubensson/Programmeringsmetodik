@@ -1,6 +1,10 @@
+// Labb1, Programmeringsmetodik
+// Oskar Rubensson (osru1900)
+// int_sorted.cpp, 2021-11-22 - 2021-11-22
+// Contains the implementation for int_sorted's functions
+
 #include "int_sorted.h"
 #include <iostream>
-#include <iterator>
 
 int_sorted::int_sorted(const int* source, size_t size)
     :_buffer(int_buffer(source, size))

@@ -1,1 +1,3 @@
-/Library/Developer/CommandLineTools/usr/bin/c++ -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/Labb1.dir/main.cpp.o CMakeFiles/Labb1.dir/int_buffer.cpp.o CMakeFiles/Labb1.dir/int_sorted.cpp.o CMakeFiles/Labb1.dir/benchmarker.cpp.o -o Labb1 
+"C:\Program Files\JetBrains\CLion 2021.2.3\bin\cmake\win\bin\cmake.exe" -E rm -f CMakeFiles\Labb1.dir/objects.a
+C:\cpp_debugger\mingw32\bin\ar.exe cr CMakeFiles\Labb1.dir/objects.a @CMakeFiles\Labb1.dir\objects1.rsp
+C:\cpp_debugger\mingw32\bin\g++.exe -g -Wl,--whole-archive CMakeFiles\Labb1.dir/objects.a -Wl,--no-whole-archive -o Labb1.exe -Wl,--out-implib,libLabb1.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\Labb1.dir\linklibs.rsp
