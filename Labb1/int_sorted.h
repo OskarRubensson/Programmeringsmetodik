@@ -1,6 +1,6 @@
 // Labb1, Programmeringsmetodik
 // Oskar Rubensson (osru1900)
-// int_sorted.h, 2021-11-22 - 2021-11-22
+// int_sorted.h, 2021-11-10 - 2021-11-22
 // Contains the definition for int_sorted
 
 #ifndef INTSORTED_H

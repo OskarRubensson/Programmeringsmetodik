@@ -1,6 +1,6 @@
 // Labb1, Programmeringsmetodik
 // Oskar Rubensson (osru1900)
-// int_buffer.cpp, 2021-11-22 - 2021-11-22
+// int_buffer.cpp, 2021-11-10 - 2021-11-24
 // Contains the implementation for int_buffer's-functions
 
 #include "int_buffer.h"
@@ -11,15 +11,15 @@ int_buffer::int_buffer(size_t size) // Default construct
 {}
 
 int_buffer::int_buffer(const int* source, size_t size) // Resize construct
-    :_buffer(new int[size]), _size(size)
+    : int_buffer(size)
 {
     std::copy(source, source+size, _buffer);
 }
 
 int_buffer::int_buffer(const int_buffer& rhs) // Copy construct
-    :_buffer(new int[rhs.size()]), _size(rhs.size())
+    : int_buffer(rhs.begin(), rhs.size())
 {
-    std::copy(rhs.begin(), rhs.end(), begin());
+
 }
 
 int_buffer::int_buffer( int_buffer&& rhs ) noexcept // Move construct
@@ -44,12 +44,12 @@ int_buffer& int_buffer::operator=( int_buffer&& rhs ) noexcept // Move assign
     return *this;
 }
 
-int& int_buffer::operator[]( size_t index ) // Get at index
+int& int_buffer::operator[]( int index ) // Get at index
 {
     return *std::next(begin(), index);
 }
 
-const int& int_buffer::operator[]( size_t index ) const // Get at index (const)
+const int& int_buffer::operator[]( int index ) const // Get at index (const)
 {
     return *(_buffer+index);
 }

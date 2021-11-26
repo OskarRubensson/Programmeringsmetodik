@@ -1,14 +1,35 @@
 // Labb1, Programmeringsmetodik
 // Oskar Rubensson (osru1900)
-// int_sorted.cpp, 2021-11-22 - 2021-11-22
+// int_sorted.cpp, 2021-11-10 - 2021-11-22
 // Contains the implementation for int_sorted's functions
 
 #include "int_sorted.h"
 #include <iostream>
 
+/*
+ * Sort a buffer using a Divide-&-conquer algorithm (merge-sort)
+ * 1. Recursively divide the buffer until we reach buffers of size 1
+ * 2. Merge them in a sorted manner until we have one big large sorted buffer
+ * This is done by first making sorted pairs, then sorted elements of size 4, 8, 16 etc.
+ */
+int_sorted sort(const int* begin, const int* end)
+{
+    if ( begin == end )
+        return int_sorted (nullptr,0) ;
+    if ( begin == end - 1 )
+        return int_sorted ( begin , 1) ;
+
+    ptrdiff_t half = ( end - begin ) / 2; // pointer diff type
+    const int * mid = begin + half ;
+    return sort(begin, mid).merge(sort(mid, end));
+}
+
 int_sorted::int_sorted(const int* source, size_t size)
     :_buffer(int_buffer(source, size))
-{}
+{
+    if (size > 1)
+        _buffer = sort(begin(), end())._buffer;
+}
 
 size_t int_sorted::size() const // Get buffer-size
 {
@@ -71,5 +92,8 @@ int_sorted int_sorted::merge(const int_sorted& merge_with) const // Returns merg
             pointer_b++;
         }
     }
-    return int_sorted(merged.begin(), merged.size());
+    int_sorted s1(nullptr, 0);
+    s1._buffer = merged;
+    return s1;
 }
+
