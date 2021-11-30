@@ -12,11 +12,13 @@
 
 class Circle: Shape {
 private:
-    int area = 0;
+    double diameter = 0;
+    char* color;
 public:
     Circle();
-    char* getColor();
-    int getArea();
+    Circle(double diameter, char* color);
+    char* getColor() const override;
+    double getArea() const override;
 };
 
 

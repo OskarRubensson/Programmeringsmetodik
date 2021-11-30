@@ -8,11 +8,12 @@
 #ifndef LABB2_SHAPE_H
 #define LABB2_SHAPE_H
 
+#define M_PI           3.14159265358979323846  /* pi */
+
 class Shape {
-    char* color[6];
 public:
-    virtual char* getColor() = 0;
-    virtual int getArea() = 0;
+    [[nodiscard]] virtual char* getColor() const = 0;
+    [[nodiscard]] virtual double getArea() const = 0;
 };
 
 #endif //LABB2_SHAPE_H
