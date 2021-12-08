@@ -1,6 +1,9 @@
 #include <iostream>
 #include <ctime>
+#include <iomanip>
 #include "p_queue.h"
+
+
 
 struct order{
     std::string broker;
@@ -19,6 +22,28 @@ struct less {
     }
 };
 
+void printTableRow(order buyOrder, order sellOrder);
+void printTableHead();
+
+void printTableHead(){
+    const int width = 18;
+    std::cout << std::left << std::setw(width) << std::setfill(' ') << "Buyer";
+    std::cout << std::left << std::setw(width) << std::setfill(' ') << "Seller";
+    std::cout << std::left << std::setw(width) << std::setfill(' ') << "Price";
+    std::cout << std::endl;
+}
+
+void printTableRow(order buyOrder, order sellOrder){
+    const int width = 18;
+    std::string currency = " kr";
+
+    std::cout << std::left << std::setw(width) << std::setfill(' ') << buyOrder.broker;
+    std::cout << std::left << std::setw(width) << std::setfill(' ') << sellOrder.broker;
+    std::cout << buyOrder.price;
+    std::cout << currency;
+    std::cout << std::endl;
+}
+
 int main() {
     srand(time(NULL));
     p_queue<order, less> buyOrders;
@@ -27,30 +52,28 @@ int main() {
     size_t orders = 21;
     size_t price_lower = 15;
     size_t price_upper = 30;
-    std::string currency = "kr";
 
     //
     for(int i = 0; i < orders; i++){
-        if (i % 3 == 0){
-            sellOrders.push(order(rand() % (price_upper - price_lower) + price_lower, "Erik Pendel"));
-            buyOrders.push(order(rand() % (price_upper - price_lower) + price_lower, "Erik Pendel"));
-        }
-        else if (i % 3 == 1){
-            sellOrders.push(order(rand() % (price_upper - price_lower) + price_lower, "Erik Pendel"));
-            buyOrders.push(order(rand() % (price_upper - price_lower) + price_lower, "Jarl Wallenburg"));
-        }
-        else if (i % 3 == 2){
-            sellOrders.push(order(rand() % (price_upper - price_lower) + price_lower, "Erik Pendel"));
-            buyOrders.push(order(rand() % (price_upper - price_lower) + price_lower, "Joakim von Anka"));
-        }
+        std::string broker_name;
+        if (i % 3 == 0)
+            broker_name = "Erik Pendel";
+        else if (i % 3 == 1)
+            broker_name = "Jarl Wallenburg";
+        else
+            broker_name = "Joakim Von Anka";
+
+        sellOrders.push(order(rand() % (price_upper - price_lower) + price_lower, broker_name));
+        buyOrders.push(order(rand() % (price_upper - price_lower) + price_lower, broker_name));
     }
 
+    printTableHead();
     while(!buyOrders.empty() && !sellOrders.empty()){
         if (buyOrders.top().price >= sellOrders.top().price){
             order buyOrder = buyOrders.pop();
             order sellOrder = sellOrders.pop();
 
-            std::cout << buyOrder.broker << " bought from " << sellOrder.broker << " for " << buyOrder.price << std::endl;
+            printTableRow(buyOrder, sellOrder);
         } else
             buyOrders.pop();
     }
