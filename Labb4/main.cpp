@@ -18,7 +18,7 @@ int main() {
     inbox.push_back(Email("Carl", "2021-12-06", "Lab 1"));
     inbox.push_back(Email("David", "2021-11-02", "Lab 5"));
 
-    inbox.sortSubject();
+    inbox.sortDate();
     show(inbox.emails());
     return 0;
 }

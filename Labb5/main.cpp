@@ -17,8 +17,8 @@ private:
     double rating;
 public:
     Greater() = delete;
-    Greater(double rating): rating(rating) {};
-    bool operator()(const Hero& hero){
+    explicit Greater(double rating): rating(rating) {};
+    bool operator()(const Hero& hero) const{
         return hero.getRating() >= rating;
     }
 };
@@ -38,9 +38,9 @@ struct Searcher{
 struct MyBinOp{
     size_t size;
 
-    MyBinOp(size_t size): size(size) {};
+    explicit MyBinOp(size_t size): size(size) {};
 
-    double operator()(double x, const Hero& hero){
+    double operator()(double x, const Hero& hero) const{
         return x += hero.getRating() / size;
     }
 };
@@ -54,8 +54,8 @@ struct MyUnaryOp{
 struct MyFunc{
     double mean;
     MyFunc() = delete;
-    MyFunc(double mean): mean(mean) {}
-    double operator()(const double& rating){
+    explicit MyFunc(double mean): mean(mean) {}
+    double operator()(const double& rating) const{
         return rating - mean;
     }
 };
@@ -66,7 +66,7 @@ int main() {
             Hero("Batman", 7),
             Hero("Iron Man", 9.3),
             Hero("Superman", 7.6),
-            Hero("Superman", 7.3),
+            Hero("Superman2", 7.3),
             Hero("Captain America", 8.8)
     };
 

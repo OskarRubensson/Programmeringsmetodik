@@ -37,10 +37,10 @@ struct CompDateAuthorSubject{
     bool operator()(const Email& lhs, const Email& rhs) {
         if (lhs.date != rhs.date)
             return lhs.date < rhs.date;
-        else if (lhs.author != rhs.author)
+        if (lhs.author != rhs.author)
             return lhs.author < rhs.author;
-        else
-            return lhs.subject < rhs.subject;
+
+        return lhs.subject < rhs.subject;
     }
 };
 
@@ -48,10 +48,10 @@ struct CompAuthorDateSubject{
     bool operator()(const Email& lhs, const Email& rhs) {
         if (lhs.author != rhs.author)
             return lhs.author < rhs.author;
-        else if (lhs.date != rhs.date)
+        if (lhs.date != rhs.date)
             return lhs.date < rhs.date;
-        else
-            return lhs.subject < rhs.subject;
+
+        return lhs.subject < rhs.subject;
     }
 };
 
@@ -59,10 +59,10 @@ struct CompSubjectAuthorDate{
     bool operator()(const Email& lhs, const Email& rhs){
         if (lhs.subject != rhs.subject)
             return lhs.subject < rhs.subject;
-        else if (lhs.author != rhs.author)
+        if (lhs.author != rhs.author)
             return lhs.author < rhs.author;
-        else
-            return lhs.date < rhs.date;
+
+        return lhs.date < rhs.date;
     }
 };
 

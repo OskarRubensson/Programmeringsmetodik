@@ -27,16 +27,13 @@ auto Mailbox::end(){
 }
 
 void Mailbox::sortAuthor(){
-    CompAuthorDateSubject cmp;
-    std::sort(inbox.begin(), inbox.end(), cmp);
+    std::sort(inbox.begin(), inbox.end(), CompAuthorDateSubject());
 }
 
 void Mailbox::sortDate(){
-    CompDateAuthorSubject cmp;
-    std::sort(inbox.begin(), inbox.end(), cmp);
+    std::sort(inbox.begin(), inbox.end(), CompDateAuthorSubject());
 }
 
 void Mailbox::sortSubject(){
-    CompSubjectAuthorDate cmp;
-    std::sort(inbox.begin(), inbox.end(), cmp);
+    std::sort(inbox.begin(), inbox.end(), CompSubjectAuthorDate());
 }

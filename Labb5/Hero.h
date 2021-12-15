@@ -17,15 +17,17 @@ private:
     std::string name;
     double rating;
 public:
-    Hero() = default;
+    Hero() = delete;
     Hero(std::string name, double rating): name(name), rating(rating) {};
 
-    std::string getName() { return name; }
-    double getRating(){ return rating; }
-    std::string getName() const { return name; }
-    double getRating() const { return rating; }
+    [[nodiscard]] std::string getName() { return name; }
+    [[nodiscard]] double getRating() { return rating; }
+    [[nodiscard]] std::string getName() const { return name; }
+    [[nodiscard]] double getRating() const { return rating; }
 
-    bool operator==(const Hero& rhs) const;
+    bool operator==(const Hero& rhs) const{
+        return name == rhs.getName();
+    };
 };
 
 #endif //LABB5_HERO_H

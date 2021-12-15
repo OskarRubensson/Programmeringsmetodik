@@ -3,8 +3,6 @@
 #include <iomanip>
 #include "p_queue.h"
 
-
-
 struct order{
     std::string broker;
     unsigned int  price;
@@ -12,10 +10,6 @@ struct order{
     order(unsigned int price, std::string broker): broker(broker), price(price) {}
 };
 
-/* Less must be a type, so we use a struct instead as in p_queue
-auto less = [](order o1, order o2)->bool{
-    return o1.price < o2.price;
-}; */
 struct less {
     bool operator()(const order& o1, const order& o2){
         return o1.price < o2.price;
@@ -27,8 +21,8 @@ void printTableHead();
 
 void printTableHead(){
     const int width = 18;
-    std::cout << std::left << std::setw(width) << std::setfill(' ') << "Buyer";
     std::cout << std::left << std::setw(width) << std::setfill(' ') << "Seller";
+    std::cout << std::left << std::setw(width) << std::setfill(' ') << "Buyer";
     std::cout << std::left << std::setw(width) << std::setfill(' ') << "Price";
     std::cout << std::endl;
 }
